@@ -43,4 +43,4 @@ class BandList {
      }
 }
 
-module.export = BandList
+module.exports = BandList
