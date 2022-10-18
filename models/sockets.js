@@ -33,6 +33,23 @@ class Sockets {
                 socket.emit('current-bands', this.bandlist.getBands())
            })
 
+           //Change Name off band
+           socket.on('changeName-band', ({id, name}) => {
+            console.log(id, name);
+            this.bandlist.changeBandName(id, name)
+            //this.emit 1 dispositive
+            //socket.io all dispositives
+            socket.emit('current-bands', this.bandlist.getBands())
+         })
+
+         socket.on('create-band', ({name}) => {
+            this.bandlist.addBand(name)
+            //this.emit 1 dispositive
+            //socket.io all dispositives
+            socket.emit('current-bands', this.bandlist.getBands())
+         })
+           
+
         });
     }
 
