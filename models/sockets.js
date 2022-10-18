@@ -17,12 +17,22 @@ class Sockets {
             console.log('cliente conectado');
             socket.emit('current-bands', this.bandlist.getBands())
             
+            //Votar Banda
             socket.on('vote-band', ({id}) => {
-                 console.log(id);
                  this.bandlist.increaseVotes(id)
+                 //this.emit 1 dispositive
+                 //socket.io all dispositives
                  socket.emit('current-bands', this.bandlist.getBands())
             })
-        
+
+            //Delete Banda
+            socket.on('delete-band', ({id}) => {
+                this.bandlist.removeBands(id)
+                //this.emit 1 dispositive
+                //socket.io all dispositives
+                socket.emit('current-bands', this.bandlist.getBands())
+           })
+
         });
     }
 
