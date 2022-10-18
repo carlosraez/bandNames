@@ -21,7 +21,7 @@ class BandList {
     }
 
     getBands() {
-        this.bands;
+       return this.bands 
     }
 
     increaseVotes(id) {
