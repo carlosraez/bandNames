@@ -17,6 +17,11 @@ class Sockets {
             console.log('cliente conectado');
             socket.emit('current-bands', this.bandlist.getBands())
             
+            socket.on('vote-band', ({id}) => {
+                 console.log(id);
+                 this.bandlist.increaseVotes(id)
+                 socket.emit('current-bands', this.bandlist.getBands())
+            })
         
         });
     }
